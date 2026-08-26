@@ -1,0 +1,19 @@
+usuario:
+CREATE TABLE usuario (
+id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(100) NOT NULL,
+email VARCHAR(150) NOT NULL UNIQUE,
+senha VARCHAR(8) NOT NULL,
+perfil ENUM('cliente', 'administrador') NOT NULL,
+data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+carrinho: 
+CREATE TABLE carrinhos (
+id_carrinho INT AUTO_INCREMENT PRIMARY KEY,
+id_usuario INT NOT NULL,
+data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+FOREIGN KEY (id_carrinho) REFERENCES carrinho(id_carrinho), FOREIGN KEY (id_produto) REFERENCES produto(id_produto) );
